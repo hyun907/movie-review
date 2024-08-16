@@ -1,5 +1,20 @@
-function App() {
-  return <>App</>;
-}
+import { useState } from "react";
+import ReviewList from "./components/ReviewList";
+import mock from "./mock.json";
 
-export default App;
+export default function App() {
+  const [order, setOrder] = useState("createdAt");
+  const sortedItems = mock.sort((a, b) => b[order] - a[order]);
+
+  const handleNewestClick = () => setOrder("createdAt");
+  const handleBestClick = () => setOrder("rating");
+  return (
+    <div>
+      <div>
+        <button onClick={handleNewestClick}>최신순</button>
+        <button onClick={handleBestClick}>베스트순</button>
+      </div>
+      <ReviewList items={sortedItems} />
+    </div>
+  );
+}
