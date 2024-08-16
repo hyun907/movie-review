@@ -1,1 +1,2 @@
-# movie-review
+# React 스터디
+
